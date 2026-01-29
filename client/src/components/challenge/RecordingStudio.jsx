@@ -9,7 +9,6 @@ const RecordingStudio = () => {
   const navigate = useNavigate();
 
   const [isRecording, setIsRecording] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
   const [recordingTime, setRecordingTime] = useState(0);
   const [audioBlob, setAudioBlob] = useState(null);
   const [audioURL, setAudioURL] = useState(null);

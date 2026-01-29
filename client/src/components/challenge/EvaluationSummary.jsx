@@ -24,7 +24,7 @@ const EvaluationSummary = () => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [participantId]);
+  }, [participantId, evaluation?.evaluationComplete, fetchEvaluation]);
 
   const fetchEvaluation = async () => {
     try {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaUsers, FaChartBar, FaSignOutAlt, FaDownload, FaPlay, FaTimes } from 'react-icons/fa';
+import { FaUsers, FaChartBar, FaSignOutAlt, FaDownload, FaTimes } from 'react-icons/fa';
 import { judgeAPI } from '../../services/api';
 
 const JudgeDashboard = () => {
@@ -21,7 +21,7 @@ const JudgeDashboard = () => {
     }
 
     fetchData();
-  }, []);
+  }, [navigate, fetchData]);
 
   const fetchData = async () => {
     try {

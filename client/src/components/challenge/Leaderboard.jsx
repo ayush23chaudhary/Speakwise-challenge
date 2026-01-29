@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaTrophy, FaMedal, FaSync, FaHome } from 'react-icons/fa';
+import { FaTrophy, FaSync, FaHome } from 'react-icons/fa';
 import { challengeAPI } from '../../services/api';
 
 const Leaderboard = () => {
