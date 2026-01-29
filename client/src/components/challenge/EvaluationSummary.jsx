@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaTrophy, FaArrowRight, FaCheckCircle } from 'react-icons/fa';
 import { challengeAPI } from '../../services/api';
@@ -8,25 +8,12 @@ import ScoreCard from '../common/ScoreCard';
 const EvaluationSummary = () => {
   const { participantId } = useParams();
   const navigate = useNavigate();
-  
+
   const [evaluation, setEvaluation] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    fetchEvaluation();
-    
-    // Poll for evaluation if not complete
-    const interval = setInterval(() => {
-      if (!evaluation?.evaluationComplete) {
-        fetchEvaluation();
-      }
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [participantId, evaluation?.evaluationComplete, fetchEvaluation]);
-
-  const fetchEvaluation = async () => {
+  const fetchEvaluation = useCallback(async () => {
     try {
       const response = await challengeAPI.getEvaluation(participantId);
       
@@ -42,7 +29,20 @@ const EvaluationSummary = () => {
       setError('Failed to fetch evaluation results.');
       setLoading(false);
     }
-  };
+  }, [participantId]);
+
+  useEffect(() => {
+    fetchEvaluation();
+    
+    // Poll for evaluation if not complete
+    const interval = setInterval(() => {
+      if (!evaluation?.evaluationComplete) {
+        fetchEvaluation();
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [evaluation?.evaluationComplete, fetchEvaluation]);
 
   if (loading || !evaluation?.evaluationComplete) {
     return (

@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "build": {
+    "type": "node",
+    "workingDirectory": "server",
+    "commands": [
+      "npm install"
+    ]
+  },
+  "run": {
+    "type": "node",
+    "workingDirectory": "server",
+    "command": "node index.js"
+  }
+}

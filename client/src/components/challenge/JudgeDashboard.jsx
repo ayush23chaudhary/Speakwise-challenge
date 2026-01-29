@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUsers, FaChartBar, FaSignOutAlt, FaDownload, FaTimes } from 'react-icons/fa';
 import { judgeAPI } from '../../services/api';
@@ -12,18 +12,7 @@ const JudgeDashboard = () => {
   const [sortBy, setSortBy] = useState('score');
   const [filterStatus, setFilterStatus] = useState('all');
 
-  useEffect(() => {
-    // Check if logged in
-    const token = localStorage.getItem('judgeToken');
-    if (!token) {
-      navigate('/judge/login');
-      return;
-    }
-
-    fetchData();
-  }, [navigate, fetchData]);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       setLoading(true);
       const [participantsRes, statsRes] = await Promise.all([
@@ -47,7 +36,18 @@ const JudgeDashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [navigate]);
+
+  useEffect(() => {
+    // Check if logged in
+    const token = localStorage.getItem('judgeToken');
+    if (!token) {
+      navigate('/judge/login');
+      return;
+    }
+
+    fetchData();
+  }, [navigate, fetchData]);
 
   const handleLogout = () => {
     localStorage.removeItem('judgeToken');
