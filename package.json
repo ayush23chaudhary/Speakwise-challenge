@@ -1,0 +1,28 @@
+{
+  "name": "speakwise-challenge",
+  "version": "1.0.0",
+  "description": "Competition platform for live judging of spoken English using AI evaluation",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && nodemon index.js",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+    "start": "node server/index.js"
+  },
+  "keywords": [
+    "speakwise",
+    "challenge",
+    "speech",
+    "evaluation",
+    "AI",
+    "competition"
+  ],
+  "author": "SpeakWise Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.2"
+  }
+}

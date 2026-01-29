@@ -1,0 +1,4 @@
+# This directory will contain Google Cloud credentials
+# File: service-account-key.json (you need to add this)
+# 
+# Already protected by .gitignore - credentials will not be committed
