@@ -139,20 +139,17 @@ const ChallengeRegistration = () => {
               <label htmlFor="name" className="block text-sm font-semibold text-text-primary mb-2">
                 Full Name <span className="text-red-500">*</span>
               </label>
-              <div className="relative">
-                <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="input-field pl-12"
-                  placeholder=""
-                  maxLength={100}
-                  required
-                />
-              </div>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="input-field"
+                placeholder="Enter your full name"
+                maxLength={100}
+                required
+              />
             </div>
 
             {/* Mobile Field */}
@@ -161,8 +158,7 @@ const ChallengeRegistration = () => {
                 Mobile Number <span className="text-red-500">*</span>
               </label>
               <div className="relative">
-                <FaPhone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                <div className="absolute left-12 top-1/2 transform -translate-y-1/2 text-gray-600 font-medium">
+                <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 font-medium">
                   +91
                 </div>
                 <input
@@ -171,8 +167,8 @@ const ChallengeRegistration = () => {
                   name="mobile"
                   value={formData.mobile}
                   onChange={handleChange}
-                  className="input-field pl-24"
-                  placeholder=""
+                  className="input-field pl-16"
+                  placeholder="9876543210"
                   maxLength={10}
                   required
                 />
