@@ -148,7 +148,7 @@ const ChallengeRegistration = () => {
                   value={formData.name}
                   onChange={handleChange}
                   className="input-field pl-12"
-                  placeholder="Enter your full name"
+                  placeholder=""
                   maxLength={100}
                   required
                 />
@@ -172,7 +172,7 @@ const ChallengeRegistration = () => {
                   value={formData.mobile}
                   onChange={handleChange}
                   className="input-field pl-24"
-                  placeholder="9876543210"
+                  placeholder=""
                   maxLength={10}
                   required
                 />
