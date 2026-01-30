@@ -1,10 +1,11 @@
 import axios from 'axios';
 
-// Use production backend URL, fallback to env var, then localhost
-const API_BASE_URL = process.env.REACT_APP_API_URL || 
-  (window.location.hostname !== 'localhost' 
-    ? 'https://speakwise-challenge-backend.onrender.com/api'
-    : 'http://localhost:5001/api');
+// Determine API base URL based on environment
+const API_BASE_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:5001/api'
+  : 'https://speakwise-challenge-backend.onrender.com/api';
+
+console.log('🔗 API Base URL:', API_BASE_URL); // Debug log
 
 const api = axios.create({
   baseURL: API_BASE_URL,
